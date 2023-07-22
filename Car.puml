@@ -1,0 +1,68 @@
+@startuml
+
+class CarFactory{
+    + test_calliope(today:date , last_service:date , current_mileage:int , last_mileage:int):Car
+    + test_glissade(today:date , last_service:date , current_mileage:int , last_mileage:int):Car
+    + test_palindrome(today:date , last_service:date , warning_light_on: bool):Car
+    + test_rorschach(today:date , last_service:date , current_mileage:int , last_mileage:int):Car
+    + test_thovex(today:date , last_service:date , current_mileage:int , last_mileage:int):Car
+}
+
+class Car {
+    - engine: Engine
+    - battery: Battery
+    + needs_service(): bool
+}
+
+class Engine {
+    + needs_service(): bool
+}
+
+class Battery{
+    + needs_service(): bool
+}
+
+class CapuletEngine {
+    - last_service_mileage: int
+    - current_mileage:int
+    + needs_service(): bool
+}
+
+class WilloughbyEngine {
+    - last_service_mileage: int
+    - current_mileage:int
+    + needs_service(): bool
+}
+
+class SternmanEngine {
+    - last_service_mileage: int
+    - current_mileage:int
+    + needs_service(): bool
+}
+
+class SpindlerBattery{
+    - last_service_date: int
+    - today : int
+    + needs_service(): bool
+}
+
+class NubbinBattery{
+    - last_service_date: int
+    - today : int
+    + needs_service(): bool
+}
+
+CapuletEngine --|> Engine
+WilloughbyEngine --|> Engine
+SternmanEngine --|> Engine
+
+SpindlerBattery --|> Battery
+NubbinBattery --|> Battery
+
+CarFactory --> Battery
+CarFactory --> Engine
+CarFactory --> Car
+Battery --> Car
+Engine --> Car
+
+@enduml
